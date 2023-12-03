@@ -60,11 +60,12 @@ public class AppController implements ErrorController {
 	@Autowired
 	AuthenticationManager authenticationManager;
 	
-
+	
 	@GetMapping("contacts")
 	public String getContact(Model model) {
 		 model.addAttribute("contacts", appService.getAllContacts());
 		 return "contacts";
+
 	}
 	@PreAuthorize("hasAuthority('ROLE_USER')")
 	@GetMapping("contacts/new")

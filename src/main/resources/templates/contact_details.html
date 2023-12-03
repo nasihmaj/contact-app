@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Details</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .contact-card {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            border: 1px solid #ddd;
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="contact-card">
+        <h1 class="text-center mb-4">Contact Details</h1>
+        <p><strong>Name:</strong> <span th:text="${contact.firstName} + ' ' + ${contact.lastName}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${contact.email}"></span></p>
+        <p><strong>Phone:</strong> <span th:text="${contact.phonenum}"></span></p>
+        <div class="text-center mt-4">
+            <a th:href="@{/{id}/address(id=${contact.id})}" class="btn btn-primary">View Address</a>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addresses</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Addresses</h2>
+
+    <div th:if="${addresses == null || addresses.empty}" class="alert alert-info" role="alert">
+        No addresses available.
+    </div>
+
+    <div th:if="${contact != null}" class="mb-4">
+        <!-- Button to trigger adding new address or any action -->
+        <a th:href="@{/create/{id}(id=${contact.id})}" class="btn btn-primary">Create Address</a>
+    </div>
+
+    <div th:unless="${addresses == null || addresses.empty}">
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Street</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="address : ${addresses}">
+                    <td th:text="${address.city}">Sample City</td>
+                    <td th:text="${address.state}">Sample State</td>
+                    <td th:text="${address.streetAddress}">Street</td>
+                    <td>
+                        <!-- Edit button -->
+                        <a th:href="@{edit/{addressId}(addressId=${address.id})}" class="btn btn-primary btn-sm" >Edit</a>
+                        <!-- Delete button -->
+                        <a th:href="@{/delete/{addressId}(addressId=${address.id})}" class="btn btn-danger btn-sm" sec:authorize="hasRole('ADMIN')">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.9/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

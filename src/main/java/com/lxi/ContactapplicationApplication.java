@@ -8,6 +8,8 @@ public class ContactapplicationApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ContactapplicationApplication.class, args);
+		System.out.println("gg");
 	}
-
+	
+	 
 }

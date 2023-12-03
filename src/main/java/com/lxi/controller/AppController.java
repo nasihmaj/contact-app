@@ -237,13 +237,6 @@ public class AppController implements ErrorController {
 	else {
 		throw new UserPrincipalNotFoundException("invalid user");
 	}
-	 switch (key) {
-	case value: {
-		
-		yield type;
-	}
-	default:
-		throw new IllegalArgumentException("Unexpected value: " + key);
-	}
+	 
 }
 }
